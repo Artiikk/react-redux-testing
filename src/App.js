@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import Header from './component/header';
+import Headline from './component/headline';
+import SharedButton from './component/button';
+import ListItem from './component/listItem';
+import { connect } from 'react-redux';
+import { fetchPosts } from './actions';
+
+import './app.scss';
+
+function App({ fetchPosts, posts }) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <section className='main'>
+        <Headline header='Posts' desc='Click the button to render posts!' />
+        <SharedButton buttonText='Get posts' emitEvent={fetchPosts} />
+
+        {!!posts.length && <div>
+          {posts.map((post, index) => <ListItem key={post.title} title={post.title} desc={post.body} />)}
+        </div>
+        }
+      </section>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    posts: state.posts
+  }
+}
+
+export default connect(mapStateToProps, { fetchPosts })(App);

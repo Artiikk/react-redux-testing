@@ -1,0 +1,15 @@
+.button {
+  cursor: pointer;
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+  outline: none;
+  border-radius: 10px;
+  background: #fff;
+  transition: background 0.3s ease-in-out;
+  font-size: 20px;
+
+  &:hover {
+    background: darken(#fff, 10%);
+  }
+}
