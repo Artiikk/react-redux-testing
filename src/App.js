@@ -19,9 +19,8 @@ function App({ fetchPosts, posts }) {
         <SharedButton buttonText='Get posts' emitEvent={fetchPosts} />
 
         {!!posts.length && <div>
-          {posts.map((post, index) => <ListItem key={post.title} title={post.title} desc={post.body} />)}
-        </div>
-        }
+          {posts.map(post => <ListItem key={post.title} title={post.title} desc={post.body} />)}
+        </div>}
       </section>
     </div>
   );
