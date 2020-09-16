@@ -26,9 +26,9 @@ function App({ fetchPosts, posts }) {
 
       <section className='main'>
         <Headline header='Posts' desc='Click the button to render posts!' />
-        {!btn && <SharedButton buttonText='Get posts' emitEvent={fetch} />}
+        <SharedButton buttonText='Get posts' emitEvent={fetch} />
 
-        {!!posts.length && <div>
+        {btn && <div>
           {posts.map(post => <ListItem key={post.title} title={post.title} desc={post.body} />)}
         </div>}
       </section>
